@@ -1,0 +1,36 @@
+class Solution {
+public:
+    vector<int> findAnagrams(string s, string p) {
+         vector<int>a;
+    vector<int>b;
+    vector<int>v;
+         if(s.length()<p.length())
+            return v;
+    for(int i=0;i<125;i++)
+    {
+        a.push_back(0);
+        b.push_back(0);
+    }
+    for(int i=0;i<p.length();i++)
+        b[p[i]]=b[p[i]]+1;
+    int left=0,right=0;
+    while(right<p.length())
+    {
+        a[s[right]]=a[s[right]]+1;
+        right=right+1;
+    }
+    while(right<s.length())
+    {
+        if(a==b)
+            v.push_back(left);
+        a[s[left]]=a[s[left]]-1;
+        a[s[right]]=a[s[right]]+1;
+        left++;
+        right++;
+    }
+         if(a==b)
+            v.push_back(left);
+    //no
+    return v;
+    }
+};
